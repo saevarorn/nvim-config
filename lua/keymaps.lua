@@ -1,6 +1,8 @@
+-- comment
 vim.keymap.set('n', '<leader>/', '<Plug>(comment_toggle_linewise_current)')
 vim.keymap.set('v', '<leader>/', '<Plug>(comment_toggle_linewise_visual)')
 
+-- System clipboard
 vim.keymap.set('n', '<leader>y', '"+y')
 vim.keymap.set('n', '<leader>Y', '"+Y')
 vim.keymap.set('n', '<leader>p', '"+p')
