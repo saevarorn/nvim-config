@@ -9,7 +9,8 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "tsserver", "ruff_lsp" },
+        ensure_installed = { "lua_ls", "tsserver" },
+        -- ensure_installed = { "lua_ls", "tsserver", "ruff_lsp" },
       })
     end,
   },
@@ -41,24 +42,24 @@ return {
         end,
       })
 
-      lspconfig.ruff_lsp.setup({
-        capabilities = capabilities,
-        on_attach = function(client)
-          vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-            pattern = "*.py",
-            group = vim.api.nvim_create_augroup("RuffAutoFix", { clear = true }),
-            callback = function(ev)
-              vim.lsp.buf.code_action({
-                filter = function(action)
-                  return action.title == "Ruff: Fix All"
-                end,
-                apply = true,
-              })
-            end,
-          })
-          lsp_format_on_save()
-        end,
-      })
+      -- lspconfig.ruff_lsp.setup({
+      --   capabilities = capabilities,
+      --   on_attach = function(client)
+      --     vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+      --       pattern = "*.py",
+      --       group = vim.api.nvim_create_augroup("RuffAutoFix", { clear = true }),
+      --       callback = function(ev)
+      --         vim.lsp.buf.code_action({
+      --           filter = function(action)
+      --             return action.title == "Ruff: Fix All"
+      --           end,
+      --           apply = true,
+      --         })
+      --       end,
+      --     })
+      --     lsp_format_on_save()
+      --   end,
+      -- })
 
       lspconfig.jsonls.setup({
         capabilities = capabilities,
